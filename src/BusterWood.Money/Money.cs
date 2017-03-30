@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BusterWood.Moneies
+namespace BusterWood.Monies
 {
     /// <summary>An amount of a specific currency, e.g. 10.99 GBP or 100.01 USD</summary>
     public struct Money : IEquatable<Money>, IComparable<Money>
