@@ -6,7 +6,6 @@ namespace BusterWood.Monies
     public struct Money : IEquatable<Money>, IComparable<Money>
     {
         public static Money None;
-
         public static Money GBP(decimal amount) => new Money(amount, "GBP");
         public static Money USD(decimal amount) => new Money(amount, "USD");
         public static Money EUR(decimal amount) => new Money(amount, "EUR");
@@ -36,25 +35,13 @@ namespace BusterWood.Monies
             }
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is Money && base.Equals((Money)obj);
-        }
+        public override bool Equals(object obj) => obj is Money && base.Equals((Money)obj);
 
-        public bool Equals(Money other)
-        {
-            return Amount == other.Amount && string.Equals(Currency, other.Currency, StringComparison.Ordinal);
-        }
+        public bool Equals(Money other) => Amount == other.Amount && string.Equals(Currency, other.Currency, StringComparison.Ordinal);
 
-        public override string ToString()
-        {
-            return $"{Amount} {Currency}";
-        }
+        public override string ToString() => $"{Amount} {Currency}";
 
-        public string ToString(string format)
-        {
-            return $"{Amount.ToString(format)} {Currency}";
-        }
+        public string ToString(string format) => $"{Amount.ToString(format)} {Currency}";
 
         public int CompareTo(Money other)
         {
@@ -63,15 +50,9 @@ namespace BusterWood.Monies
             return Amount.CompareTo(other.Amount);
         }
 
-        public static bool operator ==(Money left, Money right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Money left, Money right) => left.Equals(right);
 
-        public static bool operator !=(Money left, Money right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Money left, Money right) => !left.Equals(right);
 
         public static Money operator +(Money left, Money right)
         {
@@ -87,14 +68,8 @@ namespace BusterWood.Monies
             return new Money(left.Amount - right.Amount, left.Currency);
         }
 
-        public static Money operator *(Money value, decimal times)
-        {
-            return new Money(value.Amount * times, value.Currency);
-        }
+        public static Money operator *(Money value, decimal times) => new Money(value.Amount * times, value.Currency);
 
-        public static Money operator /(Money value, decimal divisor)
-        {
-            return new Money(value.Amount / divisor, value.Currency);
-        }
+        public static Money operator /(Money value, decimal divisor) => new Money(value.Amount / divisor, value.Currency);
     }
 }
