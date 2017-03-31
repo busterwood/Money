@@ -133,5 +133,19 @@ namespace UnitTests
         {
             Assert.AreEqual(1, 11m.GBP().CompareTo(10m.GBP()));
         }
+
+        [Test]
+        public void can_negate_positive_money()
+        {
+            var m = 1m.GBP();
+            Assert.AreEqual(-1m, -m.Amount);
+        }
+
+        [Test]
+        public void can_negate_negative_money()
+        {
+            var m = -1m.GBP();
+            Assert.AreEqual(1m, -m.Amount);
+        }
     }
 }
