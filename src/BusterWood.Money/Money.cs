@@ -2,7 +2,7 @@
 
 namespace BusterWood.Monies
 {
-    /// <summary>An amount of a specific currency, e.g. 10.99 GBP or 100.01 USD</summary>
+    /// <summary>An immutable amount of a specific currency, e.g. 10.99 GBP or 100.01 USD</summary>
     public struct Money : IEquatable<Money>, IComparable<Money>
     {
         public static Money None;
@@ -29,6 +29,7 @@ namespace BusterWood.Monies
                 throw new ArgumentOutOfRangeException(nameof(currency), "Must be 3 character ISO code");
         }
 
+        /// <summary>Returns a hash code for this money</summary>
         public override int GetHashCode() => Amount.GetHashCode() ^ (Currency == null ? 0 : Currency.GetHashCode());
 
         /// <summary>Equality based on amount and currency matching</summary>
@@ -37,8 +38,10 @@ namespace BusterWood.Monies
         /// <summary>Equality based on amount and currency matching</summary>
         public bool Equals(Money other) => Amount == other.Amount && string.Equals(Currency, other.Currency, StringComparison.Ordinal);
 
+        /// <summary>Returns a string containing the <see cref="Amount"/> and <see cref="Currency"/></summary>
         public override string ToString() => $"{Amount} {Currency}";
 
+        /// <summary>Returns a string containing a formatted <see cref="Amount"/> and <see cref="Currency"/></summary>
         public string ToString(string format) => $"{Amount.ToString(format)} {Currency}";
 
         /// <summary>Ordered comparision of money amounts.  Sorts by <see cref="Currency"/> and then by <see cref="Amount"/></summary>
@@ -79,6 +82,40 @@ namespace BusterWood.Monies
 
         /// <summary>Divide money by a number</summary>
         public static Money operator /(Money value, decimal divisor) => new Money(value.Amount / divisor, value.Currency);
+
+        /// <summary>Is the first value less than the second value?</summary>
+        public static bool operator <(Money left, Money right)
+        {
+            CheckSameCurrency(left.Currency, right.Currency);
+            return left.Amount < right.Amount;
+        }
+
+        /// <summary>Is the first value more than the second value?</summary>
+        public static bool operator >(Money left, Money right)
+        {
+            CheckSameCurrency(left.Currency, right.Currency);
+            return left.Amount > right.Amount;
+        }
+
+        /// <summary>Is the first value less than or equal to the second value?</summary>
+        public static bool operator <=(Money left, Money right)
+        {
+            CheckSameCurrency(left.Currency, right.Currency);
+            return left.Amount <= right.Amount;
+        }
+
+        /// <summary>Is the first value more than or equal to the second value?</summary>
+        public static bool operator >=(Money left, Money right)
+        {
+            CheckSameCurrency(left.Currency, right.Currency);
+            return left.Amount >= right.Amount;
+        }
+
+        private static void CheckSameCurrency(string left, string right)
+        {
+            if (!string.Equals(left, right))
+                throw new InvalidOperationException($"Cannot compare {left} and {right}");
+        }
     }
 
     public static class Extensions

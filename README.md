@@ -8,6 +8,7 @@ The `Money` constructor requires a `decimal` amount and an [ISO currency code](h
 
 Operators include:
 
+* `-` for negation
 * `+` for addition
 * `-` for substraction
 * `*` for multiplication
@@ -16,7 +17,10 @@ Operators include:
 * `!=` for inequality
 * `>` for greater than comparision
 * `<` for less than comparison
-* `-` for negation
+* `>=` for greater than or equal to comparision
+* `<=` for less than or equal to comparison
+
+If different currencies are passed to any of the above operator then an `InvalidOperationException` will be thrown.
 
 There also extension methods add to `decimal` for conversion to some common currencies, i.e. `1m.GBP()`, `2m.USD()` and `3m.EUR()`
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BusterWood.Monies
 {
-    /// <summary>A container for money of one or more currencies, i.e. 10 GBP and 20 USD</summary>
+    /// <summary>A mutable container for money of one or more currencies, i.e. 10 GBP and 20 USD</summary>
     public class MoneyBag : IEnumerable<Money>
     {
         readonly Dictionary<string, decimal> _contents = new Dictionary<string, decimal>();

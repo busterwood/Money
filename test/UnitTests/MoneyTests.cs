@@ -147,5 +147,102 @@ namespace UnitTests
             var m = -1m.GBP();
             Assert.AreEqual(1m, -m.Amount);
         }
+
+
+        [Test]
+        public void less_than_on_different_currencys_throws_exception()
+        {
+            Assert.Throws<InvalidOperationException>(() => { var r = 10m.GBP() < 11m.USD(); });
+        }
+
+        [Test]
+        public void less_than_or_equal_on_different_currencys_throws_exception()
+        {
+            Assert.Throws<InvalidOperationException>(() => { var r = 10m.GBP() <= 11m.USD(); });
+        }
+
+        [Test]
+        public void greater_than_on_different_currencys_throws_exception()
+        {
+            Assert.Throws<InvalidOperationException>(() => { var r = 10m.GBP() > 11m.USD(); });
+        }
+
+        [Test]
+        public void greater_than_or_equal_on_different_currencys_throws_exception()
+        {
+            Assert.Throws<InvalidOperationException>(() => { var r = 10m.GBP() >= 11m.USD(); });
+        }
+
+        [Test]
+        public void less_than()
+        {
+            Assert.IsTrue(10m.GBP() < 11m.GBP());
+        }
+
+        [Test]
+        public void not_less_than_when_equal()
+        {
+            Assert.IsFalse(10m.GBP() < 10m.GBP());
+        }
+
+        [Test]
+        public void not_less_than_when_more_than()
+        {
+            Assert.IsFalse(11m.GBP() < 10m.GBP());
+        }
+
+        [Test]
+        public void more_than()
+        {
+            Assert.IsTrue(12m.GBP() > 11m.GBP());
+        }
+
+        [Test]
+        public void not_more_than_when_equal()
+        {
+            Assert.IsFalse(10m.GBP() > 10m.GBP());
+        }
+
+        [Test]
+        public void not_more_than_when_less_than()
+        {
+            Assert.IsFalse(9m.GBP() > 10m.GBP());
+        }
+
+        [Test]
+        public void less_than_or_equal()
+        {
+            Assert.IsTrue(10m.GBP() <= 11m.GBP());
+        }
+
+        [Test]
+        public void less_than_or_equal_when_equal()
+        {
+            Assert.IsTrue(10m.GBP() <= 10m.GBP());
+        }
+
+        [Test]
+        public void not_less_than_or_equal_when_more_than()
+        {
+            Assert.IsFalse(11m.GBP() <= 10m.GBP());
+        }
+
+        [Test]
+        public void more_than_or_equal()
+        {
+            Assert.IsTrue(12m.GBP() >= 11m.GBP());
+        }
+
+        [Test]
+        public void more_than_or_equal_when_equal()
+        {
+            Assert.IsTrue(10m.GBP() >= 10m.GBP());
+        }
+
+        [Test]
+        public void not_more_than_or_equal_when_less_than()
+        {
+            Assert.IsFalse(9m.GBP() >= 10m.GBP());
+        }
     }
 }
