@@ -5,6 +5,7 @@ namespace BusterWood.Monies
     /// <summary>An immutable amount of a specific currency, e.g. 10.99 GBP or 100.01 USD</summary>
     public struct Money : IEquatable<Money>, IComparable<Money>
     {
+        /// <summary>No amount of any currency</summary>
         public static Money None;
 
         /// <summary>The amount of money</summary>
@@ -64,16 +65,14 @@ namespace BusterWood.Monies
         /// <summary>Addition of two money amounts</summary>
         public static Money operator +(Money left, Money right)
         {
-            if (!string.Equals(left.Currency, right.Currency, StringComparison.Ordinal))
-                throw new InvalidOperationException($"Cannot add {left.Currency} to {right.Currency}");
+            CheckSameCurrency(left.Currency, right.Currency);
             return new Money(left.Amount + right.Amount, left.Currency);
         }
 
         /// <summary>Subtraction of two money amounts</summary>
         public static Money operator -(Money left, Money right)
         {
-            if (!string.Equals(left.Currency, right.Currency, StringComparison.Ordinal))
-                throw new InvalidOperationException($"Cannot subtract {left.Currency} from {right.Currency}");
+            CheckSameCurrency(left.Currency, right.Currency);
             return new Money(left.Amount - right.Amount, left.Currency);
         }
 
@@ -114,7 +113,7 @@ namespace BusterWood.Monies
         private static void CheckSameCurrency(string left, string right)
         {
             if (!string.Equals(left, right))
-                throw new InvalidOperationException($"Cannot compare {left} and {right}");
+                throw new InvalidOperationException($"Different currencies: {left} and {right}");
         }
     }
 
