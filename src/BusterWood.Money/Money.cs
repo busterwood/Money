@@ -26,10 +26,7 @@ namespace BusterWood.Monies
 
         public override int GetHashCode()
         {
-            unchecked
-            {
-                return Amount.GetHashCode() * (Currency == null ? 0 : Currency.GetHashCode());
-            }
+            return Amount.GetHashCode() ^ (Currency == null ? 0 : Currency.GetHashCode());
         }
 
         public override bool Equals(object obj) => obj is Money && base.Equals((Money)obj);
