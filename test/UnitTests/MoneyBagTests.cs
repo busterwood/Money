@@ -100,5 +100,14 @@ namespace UnitTests
             bag.Remove("GBP");
             Assert.AreEqual(11m.USD(), bag["USD"]);
         }
+
+        [Test]
+        public void to_string_formats_using_decimal_places()
+        {
+            var bag = new MoneyBag();
+            bag.Add(10m.GBP());
+            bag.Add(11m.USD());
+            Assert.AreEqual("[ 10.00 GBP; 11.00 USD ]", bag.ToString());
+        }
     }
 }

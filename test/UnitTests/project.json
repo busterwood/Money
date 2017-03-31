@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "BusterWood.Money": "0.4.0-*",
+    "BusterWood.Money": "0.5.0-*",
     "NUnit": "3.6.1",
     "dotnet-test-nunit": "3.4.0-beta-3"
   },

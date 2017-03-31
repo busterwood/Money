@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BusterWood.Monies
 {
@@ -40,7 +41,13 @@ namespace BusterWood.Monies
         public bool Equals(Money other) => Amount == other.Amount && string.Equals(Currency, other.Currency, StringComparison.Ordinal);
 
         /// <summary>Returns a string containing the <see cref="Amount"/> and <see cref="Currency"/></summary>
-        public override string ToString() => $"{Amount} {Currency}";
+        public override string ToString()
+        {
+            int? dps = Currencies.DecimalPlaces(Currency);
+            if (dps == null)
+                return Amount + " " + Currency;
+            return Amount.ToString("N"+dps) + " " + Currency;
+        }
 
         /// <summary>Returns a string containing a formatted <see cref="Amount"/> and <see cref="Currency"/></summary>
         public string ToString(string format) => $"{Amount.ToString(format)} {Currency}";

@@ -87,10 +87,10 @@ namespace BusterWood.Monies
             sb.Append("[ ");
             foreach (var pair in _contents)
             {
-                sb.AppendFormat("{0:N2} {1}, ", pair.Value, pair.Key);
+                sb.Append(new Money(pair.Value, pair.Key).ToString()).Append("; ");
             }
             if (_contents.Count > 0)
-                sb.Length -= 2; // remove last comma and space
+                sb.Length -= 2; // remove last semicolon and space
             sb.Append(" ]");
             return sb.ToString();
         }

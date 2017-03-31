@@ -244,5 +244,18 @@ namespace UnitTests
         {
             Assert.IsFalse(9m.GBP() >= 10m.GBP());
         }
+
+        [TestCase("GBP", "10.00 GBP")]
+        [TestCase("USD", "10.00 USD")]
+        [TestCase("EUR", "10.00 EUR")]
+        [TestCase("JPY", "10 JPY")]
+        [TestCase("JOD", "10.000 JOD")]
+        [TestCase("MGA", "10.0 MGA")]
+        [TestCase("XBT", "10.00000000 XBT")]
+        public void tostring_uses_default_decimal_places_for_currency(string currency, string expected)
+        {
+            var m = new Money(10m, currency);
+            Assert.AreEqual(expected, m.ToString());
+        }
     }
 }
