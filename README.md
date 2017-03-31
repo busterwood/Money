@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/3rhcyru862ynx0aj/branch/master?svg=true)](https://ci.appveyor.com/project/busterwood/busterwood-money/branch/master) [![Nuget](https://img.shields.io/nuget/v/BusterWood.Money.svg)](https://www.nuget.org/packages/BusterWood.Money)
+
 For .NET 4.6 and .NET Standard 1.3
 
 # Money
