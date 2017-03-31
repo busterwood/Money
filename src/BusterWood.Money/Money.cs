@@ -6,9 +6,6 @@ namespace BusterWood.Monies
     public struct Money : IEquatable<Money>, IComparable<Money>
     {
         public static Money None;
-        public static Money GBP(decimal amount) => new Money(amount, "GBP");
-        public static Money USD(decimal amount) => new Money(amount, "USD");
-        public static Money EUR(decimal amount) => new Money(amount, "EUR");
 
         /// <summary>The amount of money</summary>
         public decimal Amount { get; }
@@ -71,5 +68,12 @@ namespace BusterWood.Monies
         public static Money operator *(Money value, decimal times) => new Money(value.Amount * times, value.Currency);
 
         public static Money operator /(Money value, decimal divisor) => new Money(value.Amount / divisor, value.Currency);
+    }
+
+    public static class Extensions
+    {
+        public static Money GBP(this decimal value) => new Money(value, "GBP");
+        public static Money USD(this decimal value) => new Money(value, "USD");
+        public static Money EUR(this decimal value) => new Money(value, "EUR");
     }
 }

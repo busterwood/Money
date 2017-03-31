@@ -119,19 +119,19 @@ namespace UnitTests
         [Test]
         public void compare_returns_zero_when_money_is_equal()
         {
-            Assert.AreEqual(0, Money.GBP(10).CompareTo(Money.GBP(10)));
+            Assert.AreEqual(0, 10m.GBP().CompareTo(10m.GBP()));
         }
 
         [Test]
         public void compare_returns_minus_one_when_left_value_is_less_than_right_value()
         {
-            Assert.AreEqual(-1, Money.GBP(9).CompareTo(Money.GBP(10)));
+            Assert.AreEqual(-1, 9m.GBP().CompareTo(10m.GBP()));
         }
 
         [Test]
         public void compare_returns_plus_one_when_left_value_is_more_than_right_value()
         {
-            Assert.AreEqual(1, Money.GBP(11).CompareTo(Money.GBP(10)));
+            Assert.AreEqual(1, 11m.GBP().CompareTo(10m.GBP()));
         }
     }
 }
