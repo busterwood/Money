@@ -39,6 +39,6 @@ The `MoneyBag` class is a collection of money in one or more currencies, and has
 
 ## Currencies
 
-The static `Currencies` class has a `int? DecimalPlaces(string currency)` method used to determine the decimal places used for all known [ISO currency code](https://en.wikipedia.org/wiki/ISO_4217), including Bitcoin etc.  
+The static `Currencies` class has a `int? DecimalPlaces(string currency)` method used to determine the decimal places used for all known [ISO currency codes](https://en.wikipedia.org/wiki/ISO_4217), including Bitcoin etc.  
 
 Both `Money` and `MoneyBag` use `Currencies` to correctly format money amounts.
