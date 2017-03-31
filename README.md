@@ -24,7 +24,7 @@ There also extension methods add to `decimal` for conversion to some common curr
 
 The `MoneyBag` class is a collection of money in one or more currencies, and has the following methods:
 
-* `Add`
-* `Substract`
+* `Add(Money m)`
+* `Substract(Money m)`
 * `Contains(string currency)`
 * `Money Remove(string currency)`
