@@ -1,3 +1,7 @@
+# DEPRICATED
+
+Code has moved to https://github.com/busterwood/Goodies
+
 [![Build status](https://ci.appveyor.com/api/projects/status/0l17i7thr8j915ls/branch/master?svg=true)](https://ci.appveyor.com/project/busterwood/money/branch/master) [![Nuget](https://img.shields.io/nuget/v/BusterWood.Money.svg)](https://www.nuget.org/packages/BusterWood.Money)
 
 # Money
